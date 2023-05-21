@@ -1,0 +1,34 @@
+version: "3.8"
+name: pom-moe
+
+services:
+  api:
+    image: ghcr.io/madebaruna/pom-moe/api:latest
+    init: true
+    restart: always
+    ports:
+      - "33000:8152"
+    volumes:
+      - ./.env:/pom/.env
+      - ./proxies.txt:/pom/proxies.txt
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  vault:
+    image: ghcr.io/madebaruna/pom-moe/vault:latest
+    init: true
+    restart: always
+    volumes:
+      - ./.env:/pom/.env
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  nats:
+    image: nats:latest
+    restart: always
+    command: -js -sd /data
+    volumes:
+      - nats_data:/data
+
+volumes:
+  nats_data:
