@@ -1,0 +1,8 @@
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+__debug_bin
+proxies.txt
+.env
