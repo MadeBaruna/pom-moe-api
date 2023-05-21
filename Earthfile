@@ -28,12 +28,12 @@ build-all:
 docker-api:
     COPY +build-api/api .
     ENTRYPOINT ["/pom/api"]
-    SAVE IMAGE pom-moe/api:latest
+    SAVE IMAGE ghcr.io/madebaruna/pom-moe/api:latest
 
 docker-vault:
     COPY +build-vault/vault .
     ENTRYPOINT ["/pom/vault"]
-    SAVE IMAGE pom-moe/vault:latest
+    SAVE IMAGE ghcr.io/madebaruna/pom-moe/vault:latest
 
 docker-all:
     BUILD +docker-api
