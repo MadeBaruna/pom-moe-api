@@ -3,7 +3,7 @@ name: pom-moe
 
 services:
   api:
-    image: ghcr.io/madebaruna/pom-moe/api:latest
+    image: ghcr.io/madebaruna/pom-moe-api:latest
     init: true
     restart: always
     ports:
@@ -15,7 +15,7 @@ services:
       - "host.docker.internal:host-gateway"
 
   vault:
-    image: ghcr.io/madebaruna/pom-moe/vault:latest
+    image: ghcr.io/madebaruna/pom-moe-vault:latest
     init: true
     restart: always
     volumes:
