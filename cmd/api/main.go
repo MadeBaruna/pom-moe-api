@@ -21,7 +21,7 @@ func main() {
 	app := fiber.New(fiber.Config{
 		ProxyHeader:             fiber.HeaderXForwardedFor,
 		EnableTrustedProxyCheck: true,
-		TrustedProxies:          []string{"127.0.0.1", "172.19.0.1"},
+		TrustedProxies:          []string{"127.0.0.1", "172.16.0.0/12"},
 	})
 	app.Use(recover.New(recover.Config{
 		EnableStackTrace: true,
