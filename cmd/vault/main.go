@@ -31,7 +31,7 @@ func main() {
 	sig, stop := signal.NotifyContext(context.Background(), os.Interrupt)
 	defer stop()
 
-	sub, err := queue.GetStream().PullSubscribe("store", "warp-vault", nats.BindStream("WARP"), nats.MaxDeliver(-1))
+	sub, err := queue.GetStream().PullSubscribe("store", "warp-vault", nats.BindStream("WARP"), nats.MaxDeliver(2))
 	if err != nil {
 		log.Fatal().Err(err).Msg("failed to subscribe to stream")
 	}

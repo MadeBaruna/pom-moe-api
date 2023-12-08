@@ -2,6 +2,7 @@ package services
 
 import (
 	"context"
+	"encoding/json"
 	"strconv"
 	"time"
 
@@ -74,7 +75,12 @@ func StoreWarp(data *models.GachaResponse) bool {
 
 	_, err := br.Exec()
 	if err != nil {
-		log.Error().Err(err).Msg("Error insert warps")
+		jsonStr, err := json.Marshal(data)
+		if err != nil {
+			log.Error().Err(err).Str("data", string(jsonStr)).Msg("Error insert warps")
+		} else {
+			log.Error().Err(err).Msg("Error insert warps")
+		}
 		return false
 	}
 
