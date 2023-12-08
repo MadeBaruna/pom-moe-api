@@ -75,8 +75,8 @@ func StoreWarp(data *models.GachaResponse) bool {
 
 	_, err := br.Exec()
 	if err != nil {
-		jsonStr, err := json.Marshal(data)
-		if err != nil {
+		jsonStr, errJson := json.Marshal(data)
+		if errJson != nil {
 			log.Error().Err(err).Str("data", string(jsonStr)).Msg("Error insert warps")
 		} else {
 			log.Error().Err(err).Msg("Error insert warps")
